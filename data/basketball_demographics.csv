@@ -1,0 +1,21 @@
+chart_group,population_group,category,gender,age_group,participation_rate_pct,participants_est,base_population_est,sort_order,is_derived,source_file,source_sheet,source_table,source_notes
+adult_child,Adults,Adults,,,4.53,1024360,22635108,1,no,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,1,Participation by activity (adults),Basketball row; participation rate and estimated participants from AusPlay by-sport table.
+adult_child,Children,Children,,,7.08,341727,4825068,2,no,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,2,Participation by activity (children),Basketball row; participation rate and estimated participants from AusPlay by-sport table.
+adult_child,All ages (derived),All ages,,,4.97,1366087,27460176,0,yes,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,1 and 2,Participation by activity (adults and children),Derived by combining adult and child estimated participants and estimated population bases.
+gender,Adults,Male,Male,,6.84,758262,11092495,1,no,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,1,Participation by activity (adults),Adult male basketball participation.
+gender,Adults,Female,Female,,2.3,263310,11434252,2,no,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,1,Participation by activity (adults),Adult female basketball participation.
+gender,Children,Male,Male,,9.32,230235,2470333,3,no,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,2,Participation by activity (children),Child male basketball participation.
+gender,Children,Female,Female,,4.73,110547,2336649,4,no,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,2,Participation by activity (children),Child female basketball participation.
+gender,All ages (derived),Male,Male,,7.29,988498,13562827,1,yes,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,1 and 2,Participation by activity (adults and children),Derived by combining adult and child estimates and gender-specific estimated population bases.
+gender,All ages (derived),Female,Female,,2.71,373856,13770901,2,yes,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,1 and 2,Participation by activity (adults and children),Derived by combining adult and child estimates and gender-specific estimated population bases.
+age_group,Children,0-4,,0-4,0.66,10075,1520247,1,no,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,2,Participation by activity (children),Child basketball participation by age group.
+age_group,Children,5-8,,5-8,8.21,105636,1285907,2,no,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,2,Participation by activity (children),Child basketball participation by age group.
+age_group,Children,9-11,,9-11,10.43,104818,1005173,3,no,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,2,Participation by activity (children),Child basketball participation by age group.
+age_group,Children,12-14,,12-14,11.96,121198,1013742,4,no,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,2,Participation by activity (children),Child basketball participation by age group.
+age_group,Adults,15-17,,15-17,17.28,174376,1009206,5,no,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,1,Participation by activity (adults),Adult basketball participation by age group.
+age_group,Adults,18-24,,18-24,11.69,289627,2478239,6,no,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,1,Participation by activity (adults),Adult basketball participation by age group.
+age_group,Adults,25-34,,25-34,6.16,250822,4069699,7,no,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,1,Participation by activity (adults),Adult basketball participation by age group.
+age_group,Adults,35-44,,35-44,4.84,187823,3882731,8,no,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,1,Participation by activity (adults),Adult basketball participation by age group.
+age_group,Adults,45-54,,45-54,2.62,87488,3342464,9,no,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,1,Participation by activity (adults),Adult basketball participation by age group.
+age_group,Adults,55-64,,55-64,0.78,24246,3091185,10,no,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,1,Participation by activity (adults),Adult basketball participation by age group.
+age_group,Adults,65+,,65+,0.21,9978,4761583,11,no,C4S-AusPlay-By-Sport-Data-Tables-30-April-2026.xlsx,1,Participation by activity (adults),Adult basketball participation by age group.

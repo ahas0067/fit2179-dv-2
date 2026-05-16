@@ -1,0 +1,73 @@
+lga_name,basketball_facility_count,known_court_count_records,basketball_court_count_est,indoor_facility_count,outdoor_facility_count,mixed_facility_count,unknown_indoor_outdoor_count,avg_condition_score,source_file,source_notes
+Brimbank City Council,34,24,26,0,30,0,4,,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Casey City Council,11,9,10,2,8,0,1,3.5,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Manningham City Council,9,9,11,7,2,0,0,4.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Hume City Council,8,8,19,8,0,0,0,3.88,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+South Gippsland Shire Council,8,7,10,7,0,0,1,3.83,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Bass Coast Shire Council,7,6,6,4,2,0,1,3.8,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Campaspe Shire Council,7,6,10,2,1,0,4,,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Knox City Council,7,5,12,2,2,0,3,,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Macedon Ranges Shire Council,7,7,9,5,2,0,0,3.71,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Maribyrnong City Council,7,7,15,0,2,0,5,3.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Whitehorse City Council,7,7,19,5,1,0,1,3.75,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Whittlesea City Council,7,6,12,2,4,0,1,3.6,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Baw Baw Shire Council,6,6,9,5,0,0,1,3.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Surf Coast Shire Council,6,6,8,4,1,1,0,2.58,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Golden Plains Shire Council,5,5,6,5,0,0,0,3.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+LaTrobe City Council,5,5,11,4,1,0,0,4.2,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Melbourne City Council,5,3,3,5,0,0,0,3.5,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Melton Shire Council,5,5,10,2,3,0,0,4.25,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Monash City Council,5,3,11,5,0,0,0,4.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Wellington Shire Council,5,4,9,3,1,0,1,,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Ballarat City Council,4,2,6,3,0,0,1,5.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Bendigo City Council,4,3,9,0,0,0,4,5.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Buloke Shire Council,4,3,3,3,0,0,1,2.75,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Corangamite Shire Council,4,4,5,4,0,0,0,3.75,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Hobsons Bay City Council,4,4,10,2,2,0,0,4.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Mildura Rural City Council,4,4,8,3,1,0,0,3.75,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Mitchell Shire Council,4,3,7,3,0,0,1,4.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Mornington Peninsula Shire Council,4,4,6,4,0,0,0,3.75,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Murrindindi Shire Council,4,3,4,2,0,0,2,3.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Nillumbik Shire Council,4,4,12,4,0,0,0,2.5,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Stonnington City Council,4,3,4,3,0,0,1,3.67,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Yarra City Council,4,4,6,4,0,0,0,3.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Alpine Shire Council,3,3,4,3,0,0,0,,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Boroondara City Council,3,3,6,0,0,0,3,3.67,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Cardinia Shire Council,3,3,10,3,0,0,0,4.67,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Dandenong City Council,3,3,19,3,0,0,0,4.67,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Darebin City Council,3,2,5,0,0,0,3,4.33,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Geelong City Council,3,2,6,3,0,0,0,3.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Glenelg Shire Council,3,3,4,3,0,0,0,3.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Port Phillip City Council,3,3,13,2,1,0,0,2.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Swan Hill Rural City Council,3,3,6,1,0,1,1,3.67,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Banyule City Council,2,1,1,2,0,0,0,4.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Central Goldfields Shire Council,2,2,3,2,0,0,0,3.5,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Colac Otway Shire Council,2,2,3,1,1,0,0,3.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+East Gippsland Shire Council,2,1,1,2,0,0,0,5.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Frankston City Council,2,2,7,2,0,0,0,3.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Gannawarra Shire Council,2,1,2,1,0,0,1,,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Hepburn Shire Council,2,2,3,2,0,0,0,4.5,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Hindmarsh Shire Council,2,2,2,1,1,0,0,3.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Kingston City Council,2,1,2,2,0,0,0,3.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Maroondah City Council,2,2,5,2,0,0,0,3.5,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Moira Shire Council,2,2,3,2,0,0,0,4.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Moreland City Council,2,2,2,2,0,0,0,3.5,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Northern Grampians Shire Council,2,2,3,1,0,0,1,3.5,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Shepparton City Council,2,2,5,2,0,0,0,3.5,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Warrnambool City Council,2,2,5,2,0,0,0,4.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+West Wimmera Shire Council,2,1,1,0,0,0,2,4.5,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Yarriambiack Shire Council,2,2,4,0,1,0,1,3.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Ararat Rural City Council,1,1,2,0,0,0,1,,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Benalla Rural City Council,1,1,3,1,0,0,0,2.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Glen Eira City Council,1,0,,1,0,0,0,,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Horsham Rural City Council,1,1,2,1,0,0,0,4.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Loddon Shire Council,1,1,1,1,0,0,0,4.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Mansfield Shire Council,1,1,1,1,0,0,0,1.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Moorabool Shire Council,1,1,2,1,0,0,0,4.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Mount Alexander Shire Council,1,1,2,1,0,0,0,4.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Southern Grampians Shire Council,1,1,1,1,0,0,0,5.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Strathbogie Shire Council,1,1,4,1,0,0,0,4.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Wangaratta Rural City Council,1,1,3,1,0,0,0,5.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Wodonga City Council,1,1,5,1,0,0,0,4.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Wyndham City Council,1,1,6,1,0,0,0,4.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
+Yarra Ranges Shire Council,1,1,6,1,0,0,0,4.0,victoria_basketball_facilities.csv,Derived summary grouped by LGA from cleaned basketball facility records.
