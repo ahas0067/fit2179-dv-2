@@ -1,0 +1,132 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "width": "container",
+  "height": 360,
+  "data": {
+    "url": "data/national_sport_ranking.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.is_selected_comparison == 'yes'"
+    },
+    {
+      "calculate": "datum.activity == 'Basketball' ? 'Basketball' : 'Other sports'",
+      "as": "highlight_group"
+    }
+  ],
+  "title": {
+    "text": "Basketball is one of Australia's major participation sports",
+    "subtitle": "Estimated 2025 participants across selected sports and activities",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 13,
+    "color": "#F5F7FA",
+    "subtitleColor": "#AAB4C0",
+    "font": "Inter",
+    "subtitleFont": "Inter"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 5
+      },
+      "encoding": {
+        "y": {
+          "field": "activity",
+          "type": "nominal",
+          "sort": "-x",
+          "axis": {
+            "title": null,
+            "labelColor": "#D8DEE9",
+            "labelFont": "Inter",
+            "labelFontSize": 12,
+            "labelLimit": 180,
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "x": {
+          "field": "total_participants_est_2025",
+          "type": "quantitative",
+          "axis": {
+            "title": "Estimated participants",
+            "titleColor": "#AAB4C0",
+            "labelColor": "#AAB4C0",
+            "titleFont": "Inter",
+            "labelFont": "Inter",
+            "gridColor": "#2E3746",
+            "format": ".2s"
+          }
+        },
+        "color": {
+          "condition": {
+            "test": "datum.activity == 'Basketball'",
+            "value": "#28B7FF"
+          },
+          "value": "#6F7A89"
+        },
+        "tooltip": [
+          {
+            "field": "activity",
+            "type": "nominal",
+            "title": "Activity"
+          },
+          {
+            "field": "total_participants_est_2025",
+            "type": "quantitative",
+            "title": "Estimated participants",
+            "format": ","
+          },
+          {
+            "field": "derived_total_participation_rate_pct",
+            "type": "quantitative",
+            "title": "Participation rate",
+            "format": ".1f"
+          },
+          {
+            "field": "total_rank_2025",
+            "type": "quantitative",
+            "title": "Overall rank"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 6,
+        "font": "Inter",
+        "fontSize": 11,
+        "color": "#D8DEE9"
+      },
+      "encoding": {
+        "y": {
+          "field": "activity",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "x": {
+          "field": "total_participants_est_2025",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "total_participants_est_2025",
+          "type": "quantitative",
+          "format": ".2s"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "domain": false
+    }
+  }
+}
