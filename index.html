@@ -10,9 +10,9 @@
 
   <link rel="stylesheet" href="css/styles.css">
 
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega@6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
 
   <script src="js/vega_lite_vis.js" defer></script>
 </head>
@@ -50,7 +50,7 @@
           <article class="stat-card">
             <p class="stat-label">Total Basketball Participants</p>
             <p class="stat-value">1.37M</p>
-            <p class="stat-note">Estimated Australian Participants in 2025</p>
+            <p class="stat-note">Estimated Australian participants in 2025</p>
           </article>
 
           <article class="stat-card">
@@ -69,6 +69,29 @@
 
         <div class="chart-card">
           <div id="sport-ranking-chart"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <h2>Where Basketball is Strongest</h2>
+        <p>
+          Basketball participation varies across Australia. The map shows the geographic
+          pattern by participation rate, while the bubble chart compares player base size
+          against participation rate across the states and territories.
+        </p>
+      </div>
+
+      <div class="geo-grid">
+
+        <div class="chart-card">
+          <div id="state-participation-map"></div>
+        </div>
+
+        <div class="chart-card">
+          <div id="state-scatter-chart"></div>
         </div>
 
       </div>

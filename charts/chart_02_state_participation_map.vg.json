@@ -1,0 +1,156 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "background": "transparent",
+  "width": 430,
+  "height": 390,
+  "data": {
+    "url": "js/australia_states.topojson",
+    "format": {
+      "type": "topojson",
+      "feature": "states"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.STATE_NAME",
+      "from": {
+        "data": {
+          "url": "data/basketball_state_summary.csv"
+        },
+        "key": "state",
+        "fields": [
+          "state_code",
+          "total_participants_est",
+          "derived_total_participation_rate_pct",
+          "adult_participation_rate_pct",
+          "child_participation_rate_pct"
+        ]
+      }
+    }
+  ],
+  "projection": {
+    "type": "mercator",
+    "center": [134, -28],
+    "scale": 500,
+    "translate": [215, 205]
+  },
+  "title": {
+    "text": "Victoria records the strongest basketball participation rate",
+    "subtitle": "Derived total basketball participation rate by state and territory, 2025",
+    "anchor": "start",
+    "font": "Inter",
+    "subtitleFont": "Inter",
+    "fontSize": 16,
+    "subtitleFontSize": 13,
+    "color": "#F5F7FA",
+    "subtitleColor": "#AAB4C0"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#0B111B",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "color": {
+          "field": "derived_total_participation_rate_pct",
+          "type": "quantitative",
+          "title": "Participation rate (%)",
+          "scale": {
+            "scheme": "blues",
+            "domain": [0, 7]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "titleColor": "#AAB4C0",
+            "labelColor": "#D8DEE9",
+            "titleFont": "Inter",
+            "labelFont": "Inter",
+            "gradientLength": 360,
+            "gradientThickness": 12,
+            "values": [0, 1, 2, 3, 4, 5, 6, 7],
+            "format": ".0f"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.STATE_NAME",
+            "type": "nominal",
+            "title": "State/territory"
+          },
+          {
+            "field": "state_code",
+            "type": "nominal",
+            "title": "Code"
+          },
+          {
+            "field": "derived_total_participation_rate_pct",
+            "type": "quantitative",
+            "title": "Derived total rate (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "total_participants_est",
+            "type": "quantitative",
+            "title": "Estimated participants",
+            "format": ","
+          },
+          {
+            "field": "adult_participation_rate_pct",
+            "type": "quantitative",
+            "title": "Adult rate (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "child_participation_rate_pct",
+            "type": "quantitative",
+            "title": "Child rate (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          { "state_code": "WA", "longitude": 122.0, "latitude": -26.0 },
+          { "state_code": "NT", "longitude": 133.0, "latitude": -20.5 },
+          { "state_code": "SA", "longitude": 135.5, "latitude": -30.0 },
+          { "state_code": "QLD", "longitude": 144.5, "latitude": -22.5 },
+          { "state_code": "NSW", "longitude": 147.0, "latitude": -32.5 },
+          { "state_code": "VIC", "longitude": 145.0, "latitude": -37.1 },
+          { "state_code": "TAS", "longitude": 146.7, "latitude": -42.1 },
+          { "state_code": "ACT", "longitude": 149.2, "latitude": -34.6 }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Inter",
+        "fontSize": 11,
+        "fontWeight": 700,
+        "color": "#FFFFFF"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state_code",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}
