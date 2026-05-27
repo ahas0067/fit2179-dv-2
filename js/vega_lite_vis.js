@@ -1,21 +1,109 @@
-var vg_1 = "charts/chart_01_sport_ranking.vg.json";
-var vg_2 = "charts/chart_02_state_participation_map.vg.json";
-var vg_3 = "charts/chart_03_state_scatter.vg.json";
+const charts = [
+  {
+    selector: "#sport-ranking-chart",
+    specPath: "charts/chart_01_sport_ranking.vg.json",
+    type: "bar"
+  },
+  {
+    selector: "#state-participation-map",
+    specPath: "charts/chart_02_state_participation_map.vg.json",
+    type: "map"
+  },
+  {
+    selector: "#state-scatter-chart",
+    specPath: "charts/chart_03_state_scatter.vg.json",
+    type: "scatter"
+  }
+];
 
-vegaEmbed("#sport-ranking-chart", vg_1, {
-  actions: false
-}).then(function(result) {
-  // The Vega view is available as result.view
-}).catch(console.error);
+const loadedSpecs = {};
 
-vegaEmbed("#state-participation-map", vg_2, {
-  actions: false
-}).then(function(result) {
-  // The Vega view is available as result.view
-}).catch(console.error);
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
+}
 
-vegaEmbed("#state-scatter-chart", vg_3, {
-  actions: false
-}).then(function(result) {
-  // The Vega view is available as result.view
-}).catch(console.error);
+function getResponsiveSize(container, chartType) {
+  const containerWidth = container.clientWidth;
+
+  if (chartType === "map") {
+    return {
+      width: containerWidth,
+      height: clamp(containerWidth * 0.62, 430, 560)
+    };
+  }
+
+  if (chartType === "scatter") {
+    return {
+      width: containerWidth,
+      height: clamp(containerWidth * 0.62, 430, 560)
+    };
+  }
+
+  return {
+    width: containerWidth,
+    height: clamp(containerWidth * 0.42, 340, 460)
+  };
+}
+
+function applyResponsiveSettings(spec, chartType, size) {
+  const responsiveSpec = structuredClone(spec);
+
+  responsiveSpec.width = size.width;
+  responsiveSpec.height = size.height;
+
+  if (chartType === "map") {
+    responsiveSpec.projection = {
+      type: "mercator",
+      center: [134, -28],
+      scale: size.width * 0.86,
+      translate: [size.width / 2, size.height / 2 + 10]
+    };
+  }
+
+  return responsiveSpec;
+}
+
+async function loadSpec(chart) {
+  if (!loadedSpecs[chart.specPath]) {
+    const response = await fetch(chart.specPath);
+    loadedSpecs[chart.specPath] = await response.json();
+  }
+
+  return loadedSpecs[chart.specPath];
+}
+
+async function renderChart(chart) {
+  const container = document.querySelector(chart.selector);
+
+  if (!container) {
+    return;
+  }
+
+  const baseSpec = await loadSpec(chart);
+  const size = getResponsiveSize(container, chart.type);
+  const responsiveSpec = applyResponsiveSettings(baseSpec, chart.type, size);
+
+  container.innerHTML = "";
+
+  await vegaEmbed(chart.selector, responsiveSpec, {
+    actions: false
+  });
+}
+
+async function renderAllCharts() {
+  for (const chart of charts) {
+    await renderChart(chart);
+  }
+}
+
+let resizeTimer;
+
+window.addEventListener("resize", function() {
+  clearTimeout(resizeTimer);
+
+  resizeTimer = setTimeout(function() {
+    renderAllCharts();
+  }, 250);
+});
+
+renderAllCharts();

@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "background": "transparent",
-  "width": 430,
-  "height": 390,
+  "width": 760,
+  "height": 470,
   "data": {
     "url": "js/australia_states.topojson",
     "format": {
@@ -31,8 +31,8 @@
   "projection": {
     "type": "mercator",
     "center": [134, -28],
-    "scale": 500,
-    "translate": [215, 205]
+    "scale": 650,
+    "translate": [390, 245]
   },
   "title": {
     "text": "Victoria records the strongest basketball participation rate",

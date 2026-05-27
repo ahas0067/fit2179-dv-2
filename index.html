@@ -26,7 +26,7 @@
       <h1>How strong is Basketball Participation across Australia?</h1>
 
       <p class="hero-text">
-        Basketball is one of Australia’s major participation sports. This visualisation explores
+        Basketball is one of Australia's major participation sports. This visualisation explores
         where the game is strongest, who plays it, and how organised participation and facilities
         shape access to the sport.
       </p>
@@ -37,7 +37,7 @@
         <div>
           <h2>Why Basketball Matters</h2>
           <p>
-            Before comparing states and facilities, the first step is to understand where basketball
+            Before comparing states and facilities, first we must understand where basketball
             sits among other sports and physical activities in Australia.
           </p>
         </div>
@@ -78,22 +78,41 @@
       <div class="section-heading">
         <h2>Where Basketball is Strongest</h2>
         <p>
-          Basketball participation varies across Australia. The map shows the geographic
-          pattern by participation rate, while the bubble chart compares player base size
-          against participation rate across the states and territories.
+          Basketball participation is not distributed evenly across Australia. This section compares
+          where basketball has the strongest participation rate, then checks whether high-rate states
+          also have the largest player bases.
         </p>
       </div>
 
-      <div class="geo-grid">
+      <div class="chart-block">
+        <div class="chart-description">
+          <h3>Victoria leads by participation rate</h3>
+          <p>
+            The choropleth map compares derived total basketball participation rates across states
+            and territories. Darker states represent a higher share of the population participating
+            in basketball. This gives a geographic view of where basketball participation is strongest
+            relative to population size.
+          </p>
+        </div>
 
         <div class="chart-card">
           <div id="state-participation-map"></div>
+        </div>
+      </div>
+
+      <div class="chart-block">
+        <div class="chart-description">
+          <h3>High participation does not always mean the biggest player base</h3>
+          <p>
+            The bubble scatter plot compares each state's estimated number of basketball participants
+            with its derived participation rate. This separates two different ideas: how popular
+            basketball is relative to population, and how many total players each state contributes.
+          </p>
         </div>
 
         <div class="chart-card">
           <div id="state-scatter-chart"></div>
         </div>
-
       </div>
     </section>
 
