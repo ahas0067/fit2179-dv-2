@@ -18,18 +18,53 @@
       "from": {
         "data": {
           "values": [
-            { "state_code": "VIC", "label_x": 458000, "label_y": 6.72 },
-            { "state_code": "NSW", "label_x": 422000, "label_y": 5.12 },
-            { "state_code": "QLD", "label_x": 188000, "label_y": 3.45 },
-            { "state_code": "WA", "label_x": 185000, "label_y": 5.78 },
-            { "state_code": "SA", "label_x": 108000, "label_y": 4.98 },
-            { "state_code": "ACT", "label_x": 32000, "label_y": 5.38 },
-            { "state_code": "TAS", "label_x": 36000, "label_y": 5.02 },
-            { "state_code": "NT", "label_x": 32000, "label_y": 4.62 }
+            {
+              "state_code": "VIC",
+              "label_x": 458000,
+              "label_y": 6.72
+            },
+            {
+              "state_code": "NSW",
+              "label_x": 422000,
+              "label_y": 5.12
+            },
+            {
+              "state_code": "QLD",
+              "label_x": 188000,
+              "label_y": 3.45
+            },
+            {
+              "state_code": "WA",
+              "label_x": 185000,
+              "label_y": 5.78
+            },
+            {
+              "state_code": "SA",
+              "label_x": 108000,
+              "label_y": 4.98
+            },
+            {
+              "state_code": "ACT",
+              "label_x": 32000,
+              "label_y": 5.38
+            },
+            {
+              "state_code": "TAS",
+              "label_x": 36000,
+              "label_y": 5.02
+            },
+            {
+              "state_code": "NT",
+              "label_x": 32000,
+              "label_y": 4.62
+            }
           ]
         },
         "key": "state_code",
-        "fields": ["label_x", "label_y"]
+        "fields": [
+          "label_x",
+          "label_y"
+        ]
       }
     }
   ],
@@ -61,7 +96,10 @@
       "mark": {
         "type": "rule",
         "color": "#3A4656",
-        "strokeDash": [5, 5],
+        "strokeDash": [
+          5,
+          5
+        ],
         "strokeWidth": 1
       },
       "encoding": {
@@ -86,7 +124,10 @@
       "mark": {
         "type": "rule",
         "color": "#3A4656",
-        "strokeDash": [5, 5],
+        "strokeDash": [
+          5,
+          5
+        ],
         "strokeWidth": 1
       },
       "encoding": {
@@ -132,7 +173,10 @@
           "field": "total_participants_est",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 500000]
+            "domain": [
+              0,
+              500000
+            ]
           },
           "axis": {
             "title": "Estimated participants",
@@ -149,7 +193,10 @@
           "field": "derived_total_participation_rate_pct",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 7]
+            "domain": [
+              0,
+              7
+            ]
           },
           "axis": {
             "title": "Participation rate (%)",
@@ -166,9 +213,32 @@
           "field": "adult_organised_participants_est",
           "type": "quantitative",
           "scale": {
-            "range": [120, 1800]
+            "range": [
+              120,
+              1800
+            ]
           },
-          "legend": null
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "title": "Organised Adult Participation",
+            "titleColor": "#AAB4C0",
+            "labelColor": "#D8DEE9",
+            "titleFont": "Inter",
+            "labelFont": "Inter",
+            "titleFontSize": 12,
+            "labelFontSize": 11,
+            "format": ".2s",
+            "symbolFillColor": "#8A96A6",
+            "symbolStrokeColor": "#0B111B",
+            "symbolOpacity": 0.9,
+            "values": [
+              0,
+              50000,
+              100000,
+              150000
+            ]
+          }
         },
         "color": {
           "condition": {

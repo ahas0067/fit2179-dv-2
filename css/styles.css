@@ -99,7 +99,9 @@ h2 {
 
 #sport-ranking-chart,
 #state-participation-map,
-#state-scatter-chart {
+#state-scatter-chart,
+#adult-child-chart,
+#gender-participation-chart {
   width: 100%;
 }
 

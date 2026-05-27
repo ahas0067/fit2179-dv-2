@@ -30,9 +30,15 @@
   ],
   "projection": {
     "type": "mercator",
-    "center": [134, -28],
+    "center": [
+      134,
+      -28
+    ],
     "scale": 650,
-    "translate": [390, 245]
+    "translate": [
+      390,
+      245
+    ]
   },
   "title": {
     "text": "Victoria records the strongest basketball participation rate",
@@ -59,7 +65,10 @@
           "title": "Participation rate (%)",
           "scale": {
             "scheme": "blues",
-            "domain": [0, 7]
+            "domain": [
+              0,
+              7
+            ]
           },
           "legend": {
             "orient": "bottom",
@@ -70,7 +79,16 @@
             "labelFont": "Inter",
             "gradientLength": 360,
             "gradientThickness": 12,
-            "values": [0, 1, 2, 3, 4, 5, 6, 7],
+            "values": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
             "format": ".0f"
           }
         },
@@ -115,14 +133,46 @@
     {
       "data": {
         "values": [
-          { "state_code": "WA", "longitude": 122.0, "latitude": -26.0 },
-          { "state_code": "NT", "longitude": 133.0, "latitude": -20.5 },
-          { "state_code": "SA", "longitude": 135.5, "latitude": -30.0 },
-          { "state_code": "QLD", "longitude": 144.5, "latitude": -22.5 },
-          { "state_code": "NSW", "longitude": 147.0, "latitude": -32.5 },
-          { "state_code": "VIC", "longitude": 145.0, "latitude": -37.1 },
-          { "state_code": "TAS", "longitude": 146.7, "latitude": -42.1 },
-          { "state_code": "ACT", "longitude": 149.2, "latitude": -34.6 }
+          {
+            "state_code": "WA",
+            "longitude": 122.0,
+            "latitude": -26.0
+          },
+          {
+            "state_code": "NT",
+            "longitude": 133.0,
+            "latitude": -20.5
+          },
+          {
+            "state_code": "SA",
+            "longitude": 135.5,
+            "latitude": -30.0
+          },
+          {
+            "state_code": "QLD",
+            "longitude": 144.5,
+            "latitude": -22.5
+          },
+          {
+            "state_code": "NSW",
+            "longitude": 147.0,
+            "latitude": -32.5
+          },
+          {
+            "state_code": "VIC",
+            "longitude": 145.0,
+            "latitude": -37.1
+          },
+          {
+            "state_code": "TAS",
+            "longitude": 146.7,
+            "latitude": -42.1
+          },
+          {
+            "state_code": "ACT",
+            "longitude": 149.2,
+            "latitude": -34.6
+          }
         ]
       },
       "mark": {

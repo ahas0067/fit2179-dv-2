@@ -1,0 +1,226 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+    "background": "transparent",
+    "width": "container",
+    "height": 300,
+    "data": {
+        "url": "data/basketball_demographics.csv"
+    },
+    "transform": [
+        {
+            "filter": "datum.chart_group == 'gender' && datum.population_group == 'All ages (derived)'"
+        },
+        {
+            "calculate": "datum.category == 'Female' ? -datum.participation_rate_pct : datum.participation_rate_pct",
+            "as": "signed_participation_rate"
+        },
+        {
+            "calculate": "format(datum.participation_rate_pct, '.1f') + '%'",
+            "as": "participation_rate_label"
+        },
+        {
+            "calculate": "datum.signed_participation_rate / 2",
+            "as": "label_position"
+        }
+    ],
+    "title": {
+        "text": "Basketball participation differs by gender",
+        "subtitle": "Participation rate by gender, 2025",
+        "anchor": "start",
+        "font": "Inter",
+        "subtitleFont": "Inter",
+        "fontSize": 18,
+        "subtitleFontSize": 13,
+        "color": "#F5F7FA",
+        "subtitleColor": "#AAB4C0"
+    },
+    "layer": [
+        {
+            "mark": {
+                "type": "rule",
+                "color": "#AAB4C0",
+                "strokeWidth": 1
+            },
+            "encoding": {
+                "x": {
+                    "datum": 0
+                }
+            }
+        },
+        {
+            "transform": [
+                {
+                    "filter": "datum.category == 'Female'"
+                }
+            ],
+            "mark": {
+                "type": "bar",
+                "cornerRadiusTopLeft": 7,
+                "cornerRadiusBottomLeft": 7
+            },
+            "encoding": {
+                "y": {
+                    "field": "category",
+                    "type": "nominal",
+                    "sort": [
+                        "Female",
+                        "Male"
+                    ],
+                    "axis": {
+                        "title": null,
+                        "labelColor": "#D8DEE9",
+                        "labelFont": "Inter",
+                        "labelFontSize": 13,
+                        "domain": false,
+                        "ticks": false
+                    }
+                },
+                "x": {
+                    "field": "signed_participation_rate",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            -8,
+                            8
+                        ]
+                    },
+                    "axis": {
+                        "title": "Participation rate (%)",
+                        "titleColor": "#AAB4C0",
+                        "labelColor": "#AAB4C0",
+                        "titleFont": "Inter",
+                        "labelFont": "Inter",
+                        "gridColor": "#2E3746",
+                        "labelExpr": "abs(datum.value)"
+                    }
+                },
+                "x2": {
+                    "datum": 0
+                },
+                "color": {
+                    "value": "#7A8798"
+                },
+                "tooltip": [
+                    {
+                        "field": "category",
+                        "type": "nominal",
+                        "title": "Gender"
+                    },
+                    {
+                        "field": "participation_rate_pct",
+                        "type": "quantitative",
+                        "title": "Participation rate (%)",
+                        "format": ".1f"
+                    },
+                    {
+                        "field": "participants_est",
+                        "type": "quantitative",
+                        "title": "Estimated participants",
+                        "format": ","
+                    },
+                    {
+                        "field": "base_population_est",
+                        "type": "quantitative",
+                        "title": "Estimated population base",
+                        "format": ","
+                    }
+                ]
+            }
+        },
+        {
+            "transform": [
+                {
+                    "filter": "datum.category == 'Male'"
+                }
+            ],
+            "mark": {
+                "type": "bar",
+                "cornerRadiusTopRight": 7,
+                "cornerRadiusBottomRight": 7
+            },
+            "encoding": {
+                "y": {
+                    "field": "category",
+                    "type": "nominal",
+                    "sort": [
+                        "Female",
+                        "Male"
+                    ],
+                    "axis": null
+                },
+                "x": {
+                    "datum": 0
+                },
+                "x2": {
+                    "field": "signed_participation_rate",
+                    "type": "quantitative"
+                },
+                "color": {
+                    "value": "#28B7FF"
+                },
+                "tooltip": [
+                    {
+                        "field": "category",
+                        "type": "nominal",
+                        "title": "Gender"
+                    },
+                    {
+                        "field": "participation_rate_pct",
+                        "type": "quantitative",
+                        "title": "Participation rate (%)",
+                        "format": ".1f"
+                    },
+                    {
+                        "field": "participants_est",
+                        "type": "quantitative",
+                        "title": "Estimated participants",
+                        "format": ","
+                    },
+                    {
+                        "field": "base_population_est",
+                        "type": "quantitative",
+                        "title": "Estimated population base",
+                        "format": ","
+                    }
+                ]
+            }
+        },
+        {
+            "mark": {
+                "type": "text",
+                "baseline": "middle",
+                "align": "center",
+                "font": "Inter",
+                "fontSize": 13,
+                "fontWeight": 700,
+                "color": "#F5F7FA"
+            },
+            "encoding": {
+                "y": {
+                    "field": "category",
+                    "type": "nominal",
+                    "sort": [
+                        "Female",
+                        "Male"
+                    ]
+                },
+                "x": {
+                    "field": "label_position",
+                    "type": "quantitative"
+                },
+                "text": {
+                    "field": "participation_rate_label",
+                    "type": "nominal"
+                }
+            }
+        }
+    ],
+    "config": {
+        "view": {
+            "stroke": null
+        },
+        "axis": {
+            "domain": false
+        }
+    }
+}

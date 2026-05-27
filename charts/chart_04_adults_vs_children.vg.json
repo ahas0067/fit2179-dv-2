@@ -1,0 +1,144 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "background": "transparent",
+  "width": "container",
+  "height": 360,
+  "data": {
+    "url": "data/basketball_demographics.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.chart_group == 'adult_child'"
+    },
+    {
+      "calculate": "format(datum.participation_rate_pct, '.1f') + '%'",
+      "as": "participation_rate_label"
+    }
+  ],
+  "title": {
+    "text": "Children participate in basketball at a much higher rate",
+    "subtitle": "Basketball participation rate by population group, 2025",
+    "anchor": "start",
+    "font": "Inter",
+    "subtitleFont": "Inter",
+    "fontSize": 18,
+    "subtitleFontSize": 13,
+    "color": "#F5F7FA",
+    "subtitleColor": "#AAB4C0"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 7
+      },
+      "encoding": {
+        "y": {
+          "field": "category",
+          "type": "nominal",
+          "sort": {
+            "field": "participation_rate_pct",
+            "order": "descending"
+          },
+          "axis": {
+            "title": null,
+            "labelColor": "#D8DEE9",
+            "labelFont": "Inter",
+            "labelFontSize": 13,
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "x": {
+          "field": "participation_rate_pct",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              16
+            ]
+          },
+          "axis": {
+            "title": "Participation rate (%)",
+            "titleColor": "#AAB4C0",
+            "labelColor": "#AAB4C0",
+            "titleFont": "Inter",
+            "labelFont": "Inter",
+            "gridColor": "#2E3746",
+            "format": ".0f"
+          }
+        },
+        "color": {
+          "condition": {
+            "test": "datum.category == 'Children'",
+            "value": "#28B7FF"
+          },
+          "value": "#7A8798"
+        },
+        "tooltip": [
+          {
+            "field": "category",
+            "type": "nominal",
+            "title": "Group"
+          },
+          {
+            "field": "participation_rate_pct",
+            "type": "quantitative",
+            "title": "Participation rate (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "participants_est",
+            "type": "quantitative",
+            "title": "Estimated participants",
+            "format": ","
+          },
+          {
+            "field": "base_population_est",
+            "type": "quantitative",
+            "title": "Estimated population base",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 8,
+        "font": "Inter",
+        "fontSize": 13,
+        "fontWeight": 700,
+        "color": "#F5F7FA"
+      },
+      "encoding": {
+        "y": {
+          "field": "category",
+          "type": "nominal",
+          "sort": {
+            "field": "participation_rate_pct",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "participation_rate_pct",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "participation_rate_label",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "domain": false
+    }
+  }
+}

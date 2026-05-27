@@ -13,6 +13,16 @@ const charts = [
     selector: "#state-scatter-chart",
     specPath: "charts/chart_03_state_scatter.vg.json",
     type: "scatter"
+  },
+  {
+    selector: "#adult-child-chart",
+    specPath: "charts/chart_04_adults_vs_children.vg.json",
+    type: "bar"
+  },
+  {
+    selector: "#gender-participation-chart",
+    specPath: "charts/chart_05_gender_participation.vg.json",
+    type: "bar"
   }
 ];
 
