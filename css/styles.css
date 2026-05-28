@@ -97,14 +97,6 @@ h2 {
   height: auto;
 }
 
-#sport-ranking-chart,
-#state-participation-map,
-#state-scatter-chart,
-#adult-child-chart,
-#gender-participation-chart {
-  width: 100%;
-}
-
 .intro-grid {
   display: grid;
   gap: 22px;
@@ -186,7 +178,13 @@ h2 {
   line-height: 1.6;
 }
 
+#sport-ranking-chart,
 #state-participation-map,
-#state-scatter-chart {
+#state-scatter-chart,
+#adult-child-chart,
+#gender-participation-chart,
+#age-participation-chart,
+#organised-status-chart,
+#organiser-type-chart {
   width: 100%;
 }

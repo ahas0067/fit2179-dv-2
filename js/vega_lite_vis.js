@@ -23,6 +23,21 @@ const charts = [
     selector: "#gender-participation-chart",
     specPath: "charts/chart_05_gender_participation.vg.json",
     type: "bar"
+  },
+  {
+    selector: "#age-participation-chart",
+    specPath: "charts/chart_06_age_participation_lollipop.vg.json",
+    type: "bar"
+  },
+  {
+    selector: "#organised-status-chart",
+    specPath: "charts/chart_07_organised_status.vg.json",
+    type: "pie"
+  },
+  {
+    selector: "#organiser-type-chart",
+    specPath: "charts/chart_08_organiser_type.vg.json",
+    type: "dotplot"
   }
 ];
 
@@ -46,6 +61,20 @@ function getResponsiveSize(container, chartType) {
     return {
       width: containerWidth,
       height: clamp(containerWidth * 0.62, 430, 560)
+    };
+  }
+
+  if (chartType === "pie") {
+    return {
+      width: containerWidth,
+      height: clamp(containerWidth * 0.42, 360, 460)
+    };
+  }
+
+  if (chartType === "dotplot") {
+    return {
+      width: containerWidth,
+      height: clamp(containerWidth * 0.42, 360, 500)
     };
   }
 
@@ -108,10 +137,10 @@ async function renderAllCharts() {
 
 let resizeTimer;
 
-window.addEventListener("resize", function() {
+window.addEventListener("resize", function () {
   clearTimeout(resizeTimer);
 
-  resizeTimer = setTimeout(function() {
+  resizeTimer = setTimeout(function () {
     renderAllCharts();
   }, 250);
 });

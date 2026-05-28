@@ -1,0 +1,308 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "background": "transparent",
+  "width": "container",
+  "height": 390,
+  "padding": {
+    "left": 170,
+    "right": 80,
+    "top": 10,
+    "bottom": 36
+  },
+  "data": {
+    "url": "data/basketball_organisation.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.chart_group == 'organiser_type'"
+    },
+    {
+      "calculate": "datum.category == 'Sports club or association' ? 'Sports club' : datum.category == 'Educational institution' ? 'School / education' : datum.category == 'Recreation club or association' ? 'Recreation club' : datum.category == 'Gym / fitness / sports or leisure centre' ? 'Gym / leisure centre' : datum.category == 'Individual trainer or coach' ? 'Coach / trainer' : datum.category == 'Private or commercial business' ? 'Private business' : datum.category",
+      "as": "organiser_label"
+    },
+    {
+      "calculate": "datum.organiser_label == 'Sports club' ? 1 : datum.organiser_label == 'School / education' ? 2 : datum.organiser_label == 'Recreation club' ? 3 : datum.organiser_label == 'Gym / leisure centre' ? 4 : datum.organiser_label == 'Coach / trainer' ? 5 : 6",
+      "as": "organiser_order"
+    },
+    {
+      "calculate": "format(datum.participation_rate_pct, '.1f') + '%'",
+      "as": "rate_label"
+    },
+    {
+      "calculate": "datum.population_group == 'Adults' ? 1 : 2",
+      "as": "group_order"
+    }
+  ],
+  "title": {
+    "text": "Children rely more heavily on clubs and schools",
+    "subtitle": "Participation rate by organiser type and population group, 2025",
+    "anchor": "start",
+    "font": "Inter",
+    "subtitleFont": "Inter",
+    "fontSize": 18,
+    "subtitleFontSize": 13,
+    "color": "#F5F7FA",
+    "subtitleColor": "#AAB4C0",
+    "offset": 18
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "stroke": "#566276",
+        "strokeWidth": 3,
+        "opacity": 0.85
+      },
+      "encoding": {
+        "y": {
+          "field": "organiser_label",
+          "type": "nominal",
+          "sort": {
+            "field": "organiser_order",
+            "order": "ascending"
+          },
+          "axis": {
+            "title": "Organiser type",
+            "titleColor": "#AAB4C0",
+            "titleFont": "Inter",
+            "titleFontSize": 13,
+            "titlePadding": 14,
+            "labelColor": "#D8DEE9",
+            "labelFont": "Inter",
+            "labelFontSize": 13,
+            "labelPadding": 12,
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "x": {
+          "field": "participation_rate_pct",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 4.2]
+          },
+          "axis": {
+            "title": "Participation rate (%)",
+            "titleColor": "#AAB4C0",
+            "titleFont": "Inter",
+            "titleFontSize": 13,
+            "labelColor": "#AAB4C0",
+            "labelFont": "Inter",
+            "labelFontSize": 12,
+            "grid": true,
+            "gridColor": "#2E3746",
+            "gridOpacity": 0.9,
+            "tickColor": "#3A4656",
+            "domain": false,
+            "values": [0, 1, 2, 3, 4],
+            "format": ".0f"
+          }
+        },
+        "detail": {
+          "field": "organiser_label"
+        },
+        "order": {
+          "field": "group_order",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 210,
+        "stroke": "#0B111B",
+        "strokeWidth": 1.6
+      },
+      "encoding": {
+        "y": {
+          "field": "organiser_label",
+          "type": "nominal",
+          "sort": {
+            "field": "organiser_order",
+            "order": "ascending"
+          },
+          "axis": null
+        },
+        "x": {
+          "field": "participation_rate_pct",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 4.2]
+          },
+          "axis": null
+        },
+        "color": {
+          "field": "population_group",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Adults", "Children"],
+            "range": ["#8A96A6", "#28B7FF"]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "title": null,
+            "labelColor": "#D8DEE9",
+            "labelFont": "Inter",
+            "labelFontSize": 12,
+            "symbolType": "circle"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "population_group",
+            "type": "nominal",
+            "title": "Group"
+          },
+          {
+            "field": "organiser_label",
+            "type": "nominal",
+            "title": "Organiser type"
+          },
+          {
+            "field": "participation_rate_pct",
+            "type": "quantitative",
+            "title": "Participation rate (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "participants_est",
+            "type": "quantitative",
+            "title": "Estimated participants",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.population_group == 'Adults'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -11,
+        "font": "Inter",
+        "fontSize": 12,
+        "fontWeight": 800,
+        "color": "#D8DEE9"
+      },
+      "encoding": {
+        "y": {
+          "field": "organiser_label",
+          "type": "nominal",
+          "sort": {
+            "field": "organiser_order",
+            "order": "ascending"
+          },
+          "axis": null
+        },
+        "x": {
+          "field": "participation_rate_pct",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 4.2]
+          },
+          "axis": null
+        },
+        "text": {
+          "field": "rate_label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.population_group == 'Children'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 11,
+        "font": "Inter",
+        "fontSize": 12,
+        "fontWeight": 800,
+        "color": "#F5F7FA"
+      },
+      "encoding": {
+        "y": {
+          "field": "organiser_label",
+          "type": "nominal",
+          "sort": {
+            "field": "organiser_order",
+            "order": "ascending"
+          },
+          "axis": null
+        },
+        "x": {
+          "field": "participation_rate_pct",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 4.2]
+          },
+          "axis": null
+        },
+        "text": {
+          "field": "rate_label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.organiser_label == 'Sports club' && datum.population_group == 'Children'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 58,
+        "dy": -16,
+        "font": "Inter",
+        "fontSize": 12,
+        "fontWeight": 800,
+        "color": "#28B7FF"
+      },
+      "encoding": {
+        "y": {
+          "field": "organiser_label",
+          "type": "nominal",
+          "sort": {
+            "field": "organiser_order",
+            "order": "ascending"
+          },
+          "axis": null
+        },
+        "x": {
+          "field": "participation_rate_pct",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 4.2]
+          },
+          "axis": null
+        },
+        "text": {
+          "value": "largest child setting"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "domain": false
+    }
+  }
+}

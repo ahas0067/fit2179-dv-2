@@ -1,0 +1,143 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "background": "transparent",
+  "width": "container",
+  "height": 420,
+  "data": {
+    "url": "data/basketball_organisation.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.chart_group == 'organised_status' && datum.population_group == 'Adults'"
+    },
+    {
+      "calculate": "format(datum.share_of_population_group_participants_pct, '.1f') + '%'",
+      "as": "share_label"
+    },
+    {
+      "calculate": "datum.category + ': ' + format(datum.share_of_population_group_participants_pct, '.1f') + '%'",
+      "as": "slice_label"
+    }
+  ],
+  "title": {
+    "text": "Adult basketball is split between organised and casual participation",
+    "subtitle": "Share of adult basketball participants by participation setting, 2025",
+    "anchor": "start",
+    "font": "Inter",
+    "subtitleFont": "Inter",
+    "fontSize": 18,
+    "subtitleFontSize": 13,
+    "color": "#F5F7FA",
+    "subtitleColor": "#AAB4C0"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 85,
+        "outerRadius": 155,
+        "stroke": "#121A27",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "theta": {
+          "field": "share_of_population_group_participants_pct",
+          "type": "quantitative",
+          "stack": true
+        },
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Organised", "Non-organised"],
+            "range": ["#28B7FF", "#7A8798"]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "title": null,
+            "labelColor": "#D8DEE9",
+            "labelFont": "Inter",
+            "labelFontSize": 12,
+            "symbolType": "square"
+          }
+        },
+        "order": {
+          "field": "sort_order",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "category",
+            "type": "nominal",
+            "title": "Setting"
+          },
+          {
+            "field": "share_of_population_group_participants_pct",
+            "type": "quantitative",
+            "title": "Share of adult participants (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "participants_est",
+            "type": "quantitative",
+            "title": "Estimated participants",
+            "format": ","
+          },
+          {
+            "field": "participation_rate_pct",
+            "type": "quantitative",
+            "title": "Participation rate (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "radius": 120,
+        "font": "Inter",
+        "fontSize": 15,
+        "fontWeight": 800,
+        "color": "#F5F7FA"
+      },
+      "encoding": {
+        "theta": {
+          "field": "share_of_population_group_participants_pct",
+          "type": "quantitative",
+          "stack": true
+        },
+        "text": {
+          "field": "share_label",
+          "type": "nominal"
+        },
+        "order": {
+          "field": "sort_order",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "font": "Inter",
+        "fontSize": 16,
+        "fontWeight": 800,
+        "color": "#F5F7FA",
+        "align": "center",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "text": {
+          "value": "Adults"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}
