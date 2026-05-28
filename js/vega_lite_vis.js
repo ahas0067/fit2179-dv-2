@@ -38,6 +38,16 @@ const charts = [
     selector: "#organiser-type-chart",
     specPath: "charts/chart_08_organiser_type.vg.json",
     type: "dotplot"
+  },
+  {
+    selector: "#facilities-by-lga-chart",
+    specPath: "charts/chart_09_facilities_by_lga.vg.json",
+    type: "bar"
+  },
+  {
+    selector: "#facilities-dot-map",
+    specPath: "charts/chart_10_facilities_dot_map.vg.json",
+    type: "vicmap"
   }
 ];
 
@@ -78,6 +88,13 @@ function getResponsiveSize(container, chartType) {
     };
   }
 
+  if (chartType === "vicmap") {
+    return {
+      width: containerWidth,
+      height: clamp(containerWidth * 0.62, 460, 620)
+    };
+  }
+
   return {
     width: containerWidth,
     height: clamp(containerWidth * 0.42, 340, 460)
@@ -96,6 +113,15 @@ function applyResponsiveSettings(spec, chartType, size) {
       center: [134, -28],
       scale: size.width * 0.86,
       translate: [size.width / 2, size.height / 2 + 10]
+    };
+  }
+
+  if (chartType === "vicmap") {
+    responsiveSpec.projection = {
+      type: "mercator",
+      center: [144.8, -36.9],
+      scale: size.width * 4.85,
+      translate: [size.width / 2 - 115, size.height / 2 + 10]
     };
   }
 

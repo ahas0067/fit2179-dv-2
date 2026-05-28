@@ -1,0 +1,178 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+    "background": "transparent",
+    "width": "container",
+    "height": 520,
+    "title": {
+        "text": "Basketball facilities cluster around metropolitan Melbourne",
+        "subtitle": "Recorded Victorian basketball facilities, shown by location",
+        "anchor": "start",
+        "font": "Inter",
+        "subtitleFont": "Inter",
+        "fontSize": 18,
+        "subtitleFontSize": 13,
+        "color": "#F5F7FA",
+        "subtitleColor": "#AAB4C0",
+        "offset": 18
+    },
+    "layer": [
+        {
+            "data": {
+                "url": "js/vic_state.topojson",
+                "format": {
+                    "type": "topojson",
+                    "feature": "VIC_STATE_POLYGON_shp"
+                }
+            },
+            "mark": {
+                "type": "geoshape",
+                "fill": "#182231",
+                "stroke": "#3A4656",
+                "strokeWidth": 1.2
+            }
+        },
+        {
+            "data": {
+                "url": "data/victoria_basketball_facilities.csv"
+            },
+            "transform": [
+                {
+                    "filter": "isValid(datum.latitude) && isValid(datum.longitude)"
+                },
+                {
+                    "calculate": "datum.court_count == null || datum.court_count == '' ? 1 : datum.court_count",
+                    "as": "court_count_clean"
+                },
+                {
+                    "calculate": "replace(replace(replace(datum.lga_name, ' City Council', ''), ' Shire Council', ''), ' Rural City Council', '')",
+                    "as": "lga_short"
+                }
+            ],
+            "mark": {
+                "type": "circle",
+                "opacity": 0.78,
+                "stroke": "#0B111B",
+                "strokeWidth": 0.7
+            },
+            "encoding": {
+                "longitude": {
+                    "field": "longitude",
+                    "type": "quantitative"
+                },
+                "latitude": {
+                    "field": "latitude",
+                    "type": "quantitative"
+                },
+                "size": {
+                    "field": "court_count_clean",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            1,
+                            8
+                        ],
+                        "range": [
+                            35,
+                            280
+                        ]
+                    },
+                    "legend": {
+                        "orient": "right",
+                        "direction": "vertical",
+                        "title": "Estimated courts",
+                        "titleColor": "#AAB4C0",
+                        "labelColor": "#D8DEE9",
+                        "titleFont": "Inter",
+                        "labelFont": "Inter",
+                        "titleFontSize": 20,
+                        "labelFontSize": 15,
+                        "symbolFillColor": "#28B7FF",
+                        "symbolStrokeColor": "#0B111B",
+                        "values": [
+                            1,
+                            2,
+                            4,
+                            6,
+                            8
+                        ]
+                    }
+                },
+                "color": {
+                    "field": "indoor_outdoor",
+                    "type": "nominal",
+                    "scale": {
+                        "domain": [
+                            "Indoor",
+                            "Outdoor",
+                            "Mixed",
+                            "Unknown"
+                        ],
+                        "range": [
+                            "#28B7FF",
+                            "#7A8798",
+                            "#66D9A3",
+                            "#4A5568"
+                        ]
+                    },
+                    "legend": {
+                        "orient": "bottom",
+                        "direction": "horizontal",
+                        "title": null,
+                        "labelColor": "#D8DEE9",
+                        "labelFont": "Inter",
+                        "labelFontSize": 12,
+                        "symbolType": "circle"
+                    }
+                },
+                "tooltip": [
+                    {
+                        "field": "facility_name",
+                        "type": "nominal",
+                        "title": "Facility"
+                    },
+                    {
+                        "field": "lga_short",
+                        "type": "nominal",
+                        "title": "LGA"
+                    },
+                    {
+                        "field": "suburb",
+                        "type": "nominal",
+                        "title": "Suburb"
+                    },
+                    {
+                        "field": "court_count_clean",
+                        "type": "quantitative",
+                        "title": "Estimated courts",
+                        "format": ".0f"
+                    },
+                    {
+                        "field": "indoor_outdoor",
+                        "type": "nominal",
+                        "title": "Facility type"
+                    }
+                ]
+            }
+        }
+    ],
+    "projection": {
+        "type": "mercator",
+        "center": [
+            144.8,
+            -36.9
+        ],
+        "scale": 5000,
+        "translate": [
+            520,
+            270
+        ]
+    },
+    "config": {
+        "view": {
+            "stroke": null
+        },
+        "legend": {
+            "orient": "bottom"
+        }
+    }
+}

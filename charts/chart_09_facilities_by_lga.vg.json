@@ -1,0 +1,177 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "background": "transparent",
+  "width": "container",
+  "height": 460,
+  "padding": {
+    "left": 10,
+    "right": 55,
+    "top": 10,
+    "bottom": 20
+  },
+  "data": {
+    "url": "data/victoria_basketball_facilities_by_lga.csv"
+  },
+  "transform": [
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "facility_rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "basketball_facility_count",
+          "order": "descending"
+        }
+      ]
+    },
+    {
+      "filter": "datum.facility_rank <= 10"
+    },
+    {
+      "calculate": "replace(replace(replace(datum.lga_name, ' City Council', ''), ' Shire Council', ''), ' Rural City Council', '')",
+      "as": "lga_short"
+    },
+    {
+      "calculate": "format(datum.basketball_facility_count, ',')",
+      "as": "facility_label"
+    }
+  ],
+  "title": {
+    "text": "Basketball facilities are concentrated in a small number of Victorian Local Government Areas (LGAs)",
+    "subtitle": "Top 10 Victorian LGAs by recorded basketball facility count",
+    "anchor": "start",
+    "font": "Inter",
+    "subtitleFont": "Inter",
+    "fontSize": 18,
+    "subtitleFontSize": 13,
+    "color": "#F5F7FA",
+    "subtitleColor": "#AAB4C0",
+    "offset": 18
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 7
+      },
+      "encoding": {
+        "y": {
+          "field": "lga_short",
+          "type": "nominal",
+          "sort": {
+            "field": "basketball_facility_count",
+            "order": "descending"
+          },
+          "axis": {
+            "title": "LGA",
+            "titleColor": "#AAB4C0",
+            "titleFont": "Inter",
+            "titleFontSize": 13,
+            "labelColor": "#D8DEE9",
+            "labelFont": "Inter",
+            "labelFontSize": 12,
+            "labelPadding": 8,
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "x": {
+          "field": "basketball_facility_count",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 36]
+          },
+          "axis": {
+            "title": "Recorded basketball facilities",
+            "titleColor": "#AAB4C0",
+            "titleFont": "Inter",
+            "labelColor": "#AAB4C0",
+            "labelFont": "Inter",
+            "gridColor": "#2E3746",
+            "values": [0, 5, 10, 15, 20, 25, 30, 35],
+            "format": ".0f"
+          }
+        },
+        "color": {
+          "condition": {
+            "test": "datum.lga_short == 'Brimbank'",
+            "value": "#28B7FF"
+          },
+          "value": "#7A8798"
+        },
+        "tooltip": [
+          {
+            "field": "lga_name",
+            "type": "nominal",
+            "title": "LGA"
+          },
+          {
+            "field": "basketball_facility_count",
+            "type": "quantitative",
+            "title": "Recorded facilities",
+            "format": ","
+          },
+          {
+            "field": "basketball_court_count_est",
+            "type": "quantitative",
+            "title": "Estimated courts",
+            "format": ","
+          },
+          {
+            "field": "indoor_facility_count",
+            "type": "quantitative",
+            "title": "Indoor facilities",
+            "format": ","
+          },
+          {
+            "field": "outdoor_facility_count",
+            "type": "quantitative",
+            "title": "Outdoor facilities",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 8,
+        "font": "Inter",
+        "fontSize": 12,
+        "fontWeight": 800,
+        "color": "#F5F7FA"
+      },
+      "encoding": {
+        "y": {
+          "field": "lga_short",
+          "type": "nominal",
+          "sort": {
+            "field": "basketball_facility_count",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "basketball_facility_count",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "facility_label",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "domain": false
+    }
+  }
+}
