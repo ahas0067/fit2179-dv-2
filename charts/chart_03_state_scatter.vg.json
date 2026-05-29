@@ -3,68 +3,32 @@
   "background": "transparent",
   "width": 760,
   "height": 470,
-  "padding": {
-    "top": 16,
-    "right": 10,
-    "bottom": 10,
-    "left": 10
-  },
-  "data": {
-    "url": "data/basketball_state_summary.csv"
-  },
+  "padding": { "top": 16, "right": 10, "bottom": 10, "left": 10 },
+  "data": { "url": "data/basketball_state_summary.csv" },
+  "params": [
+    {
+      "name": "selectedState",
+      "value": "Victoria"
+    }
+  ],
   "transform": [
     {
       "lookup": "state_code",
       "from": {
         "data": {
           "values": [
-            {
-              "state_code": "VIC",
-              "label_x": 458000,
-              "label_y": 6.72
-            },
-            {
-              "state_code": "NSW",
-              "label_x": 422000,
-              "label_y": 5.12
-            },
-            {
-              "state_code": "QLD",
-              "label_x": 188000,
-              "label_y": 3.45
-            },
-            {
-              "state_code": "WA",
-              "label_x": 185000,
-              "label_y": 5.78
-            },
-            {
-              "state_code": "SA",
-              "label_x": 108000,
-              "label_y": 4.98
-            },
-            {
-              "state_code": "ACT",
-              "label_x": 32000,
-              "label_y": 5.38
-            },
-            {
-              "state_code": "TAS",
-              "label_x": 36000,
-              "label_y": 5.02
-            },
-            {
-              "state_code": "NT",
-              "label_x": 32000,
-              "label_y": 4.62
-            }
+            { "state_code": "VIC", "label_x": 458000, "label_y": 6.72 },
+            { "state_code": "NSW", "label_x": 422000, "label_y": 5.12 },
+            { "state_code": "QLD", "label_x": 188000, "label_y": 3.45 },
+            { "state_code": "WA",  "label_x": 185000, "label_y": 5.78 },
+            { "state_code": "SA",  "label_x": 108000, "label_y": 4.98 },
+            { "state_code": "ACT", "label_x": 32000,  "label_y": 5.38 },
+            { "state_code": "TAS", "label_x": 36000,  "label_y": 5.02 },
+            { "state_code": "NT",  "label_x": 32000,  "label_y": 4.62 }
           ]
         },
         "key": "state_code",
-        "fields": [
-          "label_x",
-          "label_y"
-        ]
+        "fields": ["label_x", "label_y"]
       }
     }
   ],
@@ -82,228 +46,112 @@
   },
   "layer": [
     {
-      "transform": [
-        {
-          "joinaggregate": [
-            {
-              "op": "mean",
-              "field": "total_participants_est",
-              "as": "avg_participants"
-            }
-          ]
-        }
-      ],
-      "mark": {
-        "type": "rule",
-        "color": "#3A4656",
-        "strokeDash": [
-          5,
-          5
-        ],
-        "strokeWidth": 1
-      },
+      "transform": [{ "joinaggregate": [{ "op": "mean", "field": "total_participants_est", "as": "avg_participants" }] }],
+      "mark": { "type": "rule", "color": "#3A4656", "strokeDash": [5, 5], "strokeWidth": 1 },
+      "encoding": { "x": { "field": "avg_participants", "type": "quantitative" } }
+    },
+    {
+      "transform": [{ "joinaggregate": [{ "op": "mean", "field": "derived_total_participation_rate_pct", "as": "avg_rate" }] }],
+      "mark": { "type": "rule", "color": "#3A4656", "strokeDash": [5, 5], "strokeWidth": 1 },
+      "encoding": { "y": { "field": "avg_rate", "type": "quantitative" } }
+    },
+    {
+      "mark": { "type": "rule", "strokeWidth": 1, "opacity": 0.65 },
       "encoding": {
-        "x": {
-          "field": "avg_participants",
-          "type": "quantitative"
+        "x":  { "field": "total_participants_est",           "type": "quantitative" },
+        "y":  { "field": "derived_total_participation_rate_pct", "type": "quantitative" },
+        "x2": { "field": "label_x" },
+        "y2": { "field": "label_y" },
+        "color": {
+          "condition": { "test": "datum.state == selectedState", "value": "#28B7FF" },
+          "value": "#3A4656"
+        },
+        "opacity": {
+          "condition": { "test": "datum.state == selectedState", "value": 0.65 },
+          "value": 0.15
         }
       }
     },
     {
-      "transform": [
-        {
-          "joinaggregate": [
-            {
-              "op": "mean",
-              "field": "derived_total_participation_rate_pct",
-              "as": "avg_rate"
-            }
-          ]
-        }
-      ],
-      "mark": {
-        "type": "rule",
-        "color": "#3A4656",
-        "strokeDash": [
-          5,
-          5
-        ],
-        "strokeWidth": 1
-      },
-      "encoding": {
-        "y": {
-          "field": "avg_rate",
-          "type": "quantitative"
-        }
-      }
-    },
-    {
-      "mark": {
-        "type": "rule",
-        "color": "#AAB4C0",
-        "strokeWidth": 1,
-        "opacity": 0.65
-      },
-      "encoding": {
-        "x": {
-          "field": "total_participants_est",
-          "type": "quantitative"
-        },
-        "y": {
-          "field": "derived_total_participation_rate_pct",
-          "type": "quantitative"
-        },
-        "x2": {
-          "field": "label_x"
-        },
-        "y2": {
-          "field": "label_y"
-        }
-      }
-    },
-    {
-      "mark": {
-        "type": "circle",
-        "opacity": 0.9,
-        "stroke": "#0B111B",
-        "strokeWidth": 1
-      },
+      "mark": { "type": "circle", "stroke": "#0B111B", "strokeWidth": 1 },
       "encoding": {
         "x": {
           "field": "total_participants_est",
           "type": "quantitative",
-          "scale": {
-            "domain": [
-              0,
-              500000
-            ]
-          },
+          "scale": { "domain": [0, 500000] },
           "axis": {
             "title": "Estimated participants",
-            "titleColor": "#AAB4C0",
-            "labelColor": "#AAB4C0",
-            "titleFont": "Inter",
-            "labelFont": "Inter",
-            "gridColor": "#2E3746",
-            "tickCount": 5,
-            "format": ".2s"
+            "titleColor": "#AAB4C0", "labelColor": "#AAB4C0",
+            "titleFont": "Inter", "labelFont": "Inter",
+            "gridColor": "#2E3746", "tickCount": 5, "format": ".2s"
           }
         },
         "y": {
           "field": "derived_total_participation_rate_pct",
           "type": "quantitative",
-          "scale": {
-            "domain": [
-              0,
-              7
-            ]
-          },
+          "scale": { "domain": [0, 7] },
           "axis": {
             "title": "Participation rate (%)",
-            "titleColor": "#AAB4C0",
-            "labelColor": "#AAB4C0",
-            "titleFont": "Inter",
-            "labelFont": "Inter",
-            "gridColor": "#2E3746",
-            "tickCount": 8,
-            "format": ".0f"
+            "titleColor": "#AAB4C0", "labelColor": "#AAB4C0",
+            "titleFont": "Inter", "labelFont": "Inter",
+            "gridColor": "#2E3746", "tickCount": 8, "format": ".0f"
           }
         },
         "size": {
           "field": "adult_organised_participants_est",
           "type": "quantitative",
-          "scale": {
-            "range": [
-              120,
-              1800
-            ]
-          },
+          "scale": { "range": [120, 1800] },
           "legend": {
-            "orient": "bottom",
-            "direction": "horizontal",
+            "orient": "bottom", "direction": "horizontal",
             "title": "Organised Adult Participation",
-            "titleColor": "#AAB4C0",
-            "labelColor": "#D8DEE9",
-            "titleFont": "Inter",
-            "labelFont": "Inter",
-            "titleFontSize": 12,
-            "labelFontSize": 11,
+            "titleColor": "#AAB4C0", "labelColor": "#D8DEE9",
+            "titleFont": "Inter", "labelFont": "Inter",
+            "titleFontSize": 12, "labelFontSize": 11,
             "format": ".2s",
-            "symbolFillColor": "#8A96A6",
-            "symbolStrokeColor": "#0B111B",
+            "symbolFillColor": "#8A96A6", "symbolStrokeColor": "#0B111B",
             "symbolOpacity": 0.9,
-            "values": [
-              0,
-              50000,
-              100000,
-              150000
-            ]
+            "values": [0, 50000, 100000, 150000]
           }
         },
         "color": {
-          "condition": {
-            "test": "datum.state == 'Victoria'",
-            "value": "#28B7FF"
-          },
+          "condition": { "test": "datum.state == selectedState", "value": "#28B7FF" },
           "value": "#8A96A6"
         },
+        "opacity": {
+          "condition": { "test": "datum.state == selectedState", "value": 0.95 },
+          "value": 0.2
+        },
+        "strokeWidth": {
+          "condition": { "test": "datum.state == selectedState", "value": 2.5 },
+          "value": 0.5
+        },
         "tooltip": [
-          {
-            "field": "state",
-            "type": "nominal",
-            "title": "State/territory"
-          },
-          {
-            "field": "total_participants_est",
-            "type": "quantitative",
-            "title": "Estimated participants",
-            "format": ","
-          },
-          {
-            "field": "derived_total_participation_rate_pct",
-            "type": "quantitative",
-            "title": "Derived total rate (%)",
-            "format": ".1f"
-          },
-          {
-            "field": "adult_organised_participants_est",
-            "type": "quantitative",
-            "title": "Organised adult participants",
-            "format": ","
-          }
+          { "field": "state",                             "type": "nominal",      "title": "State/territory" },
+          { "field": "total_participants_est",            "type": "quantitative", "title": "Estimated participants",     "format": "," },
+          { "field": "derived_total_participation_rate_pct", "type": "quantitative", "title": "Derived total rate (%)", "format": ".1f" },
+          { "field": "adult_organised_participants_est",  "type": "quantitative", "title": "Organised adult participants", "format": "," }
         ]
       }
     },
     {
-      "mark": {
-        "type": "text",
-        "font": "Inter",
-        "fontSize": 10,
-        "fontWeight": 800,
-        "color": "#F5F7FA"
-      },
+      "mark": { "type": "text", "font": "Inter", "fontSize": 10, "fontWeight": 800 },
       "encoding": {
-        "x": {
-          "field": "label_x",
-          "type": "quantitative"
+        "x":    { "field": "label_x",     "type": "quantitative" },
+        "y":    { "field": "label_y",     "type": "quantitative" },
+        "text": { "field": "state_code",  "type": "nominal" },
+        "color": {
+          "condition": { "test": "datum.state == selectedState", "value": "#F5F7FA" },
+          "value": "#566276"
         },
-        "y": {
-          "field": "label_y",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "state_code",
-          "type": "nominal"
+        "fontWeight": {
+          "condition": { "test": "datum.state == selectedState", "value": 800 },
+          "value": 400
         }
       }
     }
   ],
   "config": {
-    "view": {
-      "stroke": null
-    },
-    "axis": {
-      "domain": false
-    }
+    "view": { "stroke": null },
+    "axis": { "domain": false }
   }
 }

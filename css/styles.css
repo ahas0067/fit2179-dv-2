@@ -204,6 +204,13 @@ h2 {
   padding: 28px;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
   min-height: 390px;
+  display: flex;
+  flex-direction: column;
+}
+
+.participation-summary-card .person-fill-row {
+  flex: 1;
+  align-items: center;
 }
 
 .summary-card-header {
@@ -444,154 +451,19 @@ h2 {
   line-height: 1.35;
 }
 
-.gender-summary-card {
-  min-height: 390px;
-}
-
 .balance-scale-visual {
-  position: relative;
-  height: 320px;
-  margin: 10px 0 24px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px 0 18px;
 }
 
-.balance-top {
-  position: absolute;
-  left: 50%;
-  top: 40px;
-  width: 280px;
-  height: 20px;
-  transform: translateX(-50%);
-}
-
-.scale-beam {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 280px;
-  height: 8px;
-  border-radius: 999px;
-  background: #8b98ab;
-  transform: rotate(10deg);
-  transform-origin: center center;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
-}
-
-.scale-stand {
-  position: absolute;
-  left: 50%;
-  top: 58px;
-  width: 10px;
-  height: 150px;
-  border-radius: 999px;
-  background: #8b98ab;
-  transform: translateX(-50%);
-}
-
-.scale-base {
-  position: absolute;
-  left: 50%;
-  bottom: 38px;
-  width: 120px;
-  height: 14px;
-  border-radius: 999px;
-  background: #8b98ab;
-  transform: translateX(-50%);
-}
-
-.scale-side {
-  position: absolute;
-  width: 130px;
-  text-align: center;
-}
-
-.scale-left {
-  left: 20%;
-  top: 72px;
-}
-
-.scale-right {
-  right: 20%;
-  top: 108px;
-}
-
-.scale-hanger {
-  width: 2px;
-  height: 54px;
-  margin: 0 auto;
-  background: #8b98ab;
-}
-
-.scale-pan {
-  margin: 0 auto;
-  width: 120px;
-  min-height: 120px;
-  padding: 14px 10px 12px;
-  border: 2px solid #8b98ab;
-  border-radius: 0 0 20px 20px;
-  border-top: none;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.scale-person {
-  width: 52px;
-  margin: 0 auto 10px;
-}
-
-.scale-person svg {
-  display: block;
+.scale-svg {
   width: 100%;
+  max-width: 340px;
   height: auto;
-  fill: currentColor;
-}
-
-.female-person {
-  color: #9aa7b9;
-}
-
-.male-person {
-  color: var(--blue);
-}
-
-.scale-value {
-  margin: 0;
-  color: var(--text);
-  font-size: 1.7rem;
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.04em;
-}
-
-.scale-label {
-  margin: 6px 0 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-  font-weight: 700;
-}
-
-@media (max-width: 800px) {
-  .balance-scale-visual {
-    height: 340px;
-  }
-
-  .balance-top {
-    width: 230px;
-  }
-
-  .scale-beam {
-    width: 230px;
-  }
-
-  .scale-left {
-    left: 8%;
-  }
-
-  .scale-right {
-    right: 8%;
-  }
-
-  .scale-pan {
-    width: 108px;
-  }
+  display: block;
 }
 
 .facilities-card {
@@ -896,4 +768,76 @@ h2 {
     gap: 28px;
     padding: 26px;
   }
+}
+.scatter-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.scatter-label {
+  color: var(--muted);
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.state-dropdown {
+  padding: 7px 32px 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--panel-border);
+  background: transparent;
+  color: var(--text);
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23AAB4C0' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.state-dropdown:hover,
+.state-dropdown:focus {
+  border-color: var(--blue);
+  outline: none;
+}
+
+.state-dropdown option {
+  background: #121a27;
+  color: var(--text);
+}
+
+.map-switcher {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.map-btn {
+  padding: 7px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--panel-border);
+  background: transparent;
+  color: var(--muted);
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.map-btn:hover {
+  border-color: var(--blue);
+  color: var(--text);
+}
+
+.map-btn.active {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #0b111b;
 }

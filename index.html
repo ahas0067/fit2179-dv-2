@@ -96,6 +96,11 @@
         </div>
 
         <div class="chart-card">
+          <div class="map-switcher" role="group" aria-label="Switch map metric">
+            <button class="map-btn active" data-metric="total" onclick="switchMapMetric('total', this)">Total rate</button>
+            <button class="map-btn" data-metric="adult" onclick="switchMapMetric('adult', this)">Adult rate</button>
+            <button class="map-btn" data-metric="child" onclick="switchMapMetric('child', this)">Child rate</button>
+          </div>
           <div id="state-participation-map"></div>
         </div>
       </div>
@@ -111,6 +116,19 @@
         </div>
 
         <div class="chart-card">
+          <div class="scatter-controls">
+            <label class="scatter-label" for="state-select">Highlight state</label>
+            <select id="state-select" class="state-dropdown" onchange="switchScatterState(this.value)">
+              <option value="Victoria" selected>Victoria</option>
+              <option value="New South Wales">New South Wales</option>
+              <option value="Queensland">Queensland</option>
+              <option value="Western Australia">Western Australia</option>
+              <option value="South Australia">South Australia</option>
+              <option value="Australian Capital Territory">ACT</option>
+              <option value="Tasmania">Tasmania</option>
+              <option value="Northern Territory">Northern Territory</option>
+            </select>
+          </div>
           <div id="state-scatter-chart"></div>
         </div>
       </div>
@@ -251,6 +269,12 @@
         </div>
 
         <div class="chart-card">
+          <div class="map-switcher" role="group" aria-label="Filter by facility type">
+            <button class="map-btn active" onclick="switchFacilityFilter('All', this)">All</button>
+            <button class="map-btn" onclick="switchFacilityFilter('Indoor', this)">Indoor</button>
+            <button class="map-btn" onclick="switchFacilityFilter('Outdoor', this)">Outdoor</button>
+            <button class="map-btn" onclick="switchFacilityFilter('Mixed', this)">Mixed</button>
+          </div>
           <div id="facilities-dot-map"></div>
         </div>
       </div>
@@ -374,53 +398,45 @@
             <h3>Male participation is noticeably higher than female participation</h3>
           </div>
 
-          <div class="balance-scale-visual">
+          <div class="balance-scale-visual" aria-label="Balance scale showing male participation at 7.3% outweighs female at 2.7%">
+            <svg class="scale-svg" viewBox="0 0 340 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Stand -->
+              <rect x="165" y="80" width="10" height="130" rx="5" fill="#8b98ab"/>
+              <!-- Base -->
+              <rect x="105" y="208" width="130" height="12" rx="6" fill="#8b98ab"/>
+              <!-- Pivot dot -->
+              <circle cx="170" cy="82" r="7" fill="#aab4c0"/>
+              <!-- Beam: tilted so left (female) is high, right (male) is low -->
+              <line x1="50" y1="58" x2="290" y2="92" stroke="#aab4c0" stroke-width="8" stroke-linecap="round"/>
 
-            <div class="balance-top">
-              <div class="scale-beam"></div>
-            </div>
+              <!-- Left hanger (female, high) -->
+              <line x1="80" y1="62" x2="80" y2="100" stroke="#8b98ab" stroke-width="2"/>
+              <!-- Left pan -->
+              <rect x="38" y="100" width="84" height="86" rx="14" fill="rgba(255,255,255,0.04)" stroke="#566276" stroke-width="2"/>
+              <!-- Female figure -->
+              <circle cx="80" cy="120" r="11" fill="#9aa7b9"/>
+              <path d="M80 134 L64 164 H96 Z" fill="#9aa7b9"/>
+              <rect x="57" y="140" width="9" height="24" rx="4.5" fill="#9aa7b9"/>
+              <rect x="74" y="164" width="7" height="20" rx="3.5" fill="#9aa7b9"/>
+              <rect x="86" y="164" width="7" height="20" rx="3.5" fill="#9aa7b9"/>
+              <!-- Female label -->
+              <text x="80" y="200" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="800" fill="#f5f7fa">2.7%</text>
+              <text x="80" y="215" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#aab4c0">Female</text>
 
-            <div class="scale-stand"></div>
-            <div class="scale-base"></div>
-
-            <!-- Left side: Female (lighter, higher) -->
-            <div class="scale-side scale-left">
-              <div class="scale-hanger"></div>
-              <div class="scale-pan">
-                <div class="scale-person female-person" aria-hidden="true">
-                  <svg viewBox="0 0 80 110" role="img">
-                    <circle cx="40" cy="16" r="12"></circle>
-                    <path d="M40 32 L24 68 H56 Z"></path>
-                    <rect x="18" y="38" width="10" height="30" rx="5"></rect>
-                    <rect x="52" y="38" width="10" height="30" rx="5"></rect>
-                    <rect x="30" y="68" width="8" height="28" rx="4"></rect>
-                    <rect x="42" y="68" width="8" height="28" rx="4"></rect>
-                  </svg>
-                </div>
-                <p class="scale-value">2.7%</p>
-                <p class="scale-label">Female</p>
-              </div>
-            </div>
-
-            <!-- Right side: Male (heavier, lower) -->
-            <div class="scale-side scale-right">
-              <div class="scale-hanger"></div>
-              <div class="scale-pan">
-                <div class="scale-person male-person" aria-hidden="true">
-                  <svg viewBox="0 0 80 110" role="img">
-                    <circle cx="40" cy="16" r="12"></circle>
-                    <rect x="26" y="32" width="28" height="34" rx="10"></rect>
-                    <rect x="16" y="38" width="10" height="28" rx="5"></rect>
-                    <rect x="54" y="38" width="10" height="28" rx="5"></rect>
-                    <rect x="30" y="66" width="8" height="30" rx="4"></rect>
-                    <rect x="42" y="66" width="8" height="30" rx="4"></rect>
-                  </svg>
-                </div>
-                <p class="scale-value">7.3%</p>
-                <p class="scale-label">Male</p>
-              </div>
-            </div>
-
+              <!-- Right hanger (male, low) -->
+              <line x1="260" y1="96" x2="260" y2="118" stroke="#8b98ab" stroke-width="2"/>
+              <!-- Right pan -->
+              <rect x="218" y="118" width="84" height="86" rx="14" fill="rgba(40,183,255,0.07)" stroke="#28b7ff" stroke-width="2"/>
+              <!-- Male figure -->
+              <circle cx="260" cy="138" r="11" fill="#28b7ff"/>
+              <rect x="248" y="152" width="24" height="28" rx="9" fill="#28b7ff"/>
+              <rect x="238" y="156" width="9" height="22" rx="4.5" fill="#28b7ff"/>
+              <rect x="253" y="180" width="7" height="20" rx="3.5" fill="#28b7ff"/>
+              <rect x="265" y="180" width="7" height="20" rx="3.5" fill="#28b7ff"/>
+              <!-- Male label -->
+              <text x="260" y="218" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="800" fill="#f5f7fa">7.3%</text>
+              <text x="260" y="233" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#aab4c0">Male</text>
+            </svg>
           </div>
 
           <p class="summary-note">
