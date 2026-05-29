@@ -79,13 +79,13 @@
                     "legend": {
                         "orient": "right",
                         "direction": "vertical",
-                        "title": "Estimated courts",
+                        "title": "Estimated Courts",
                         "titleColor": "#AAB4C0",
                         "labelColor": "#D8DEE9",
                         "titleFont": "Inter",
                         "labelFont": "Inter",
-                        "titleFontSize": 20,
-                        "labelFontSize": 15,
+                        "titleFontSize": 15,
+                        "labelFontSize": 12,
                         "symbolFillColor": "#28B7FF",
                         "symbolStrokeColor": "#0B111B",
                         "values": [
